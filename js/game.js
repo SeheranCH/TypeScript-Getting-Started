@@ -1,12 +1,14 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Game = void 0;
+const utility_1 = require("./utility");
+const scoreboard_1 = require("./scoreboard");
 class Game {
     constructor(player, problemCount, factor) {
         this.player = player;
         this.problemCount = problemCount;
         this.factor = factor;
-        this.scoreboard = new Scoreboard();
+        this.scoreboard = new scoreboard_1.Scoreboard();
     }
     displayGame() {
         let gameForm = '';
@@ -24,7 +26,7 @@ class Game {
     calculateScore() {
         let score = 0;
         for (let i = 1; i <= this.problemCount; i++) {
-            const answer = Number(Utility.getInputValue('answer' + i));
+            const answer = Number((0, utility_1.getValue)('answer' + i));
             if (i * this.factor === answer) {
                 score++;
             }
